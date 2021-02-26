@@ -99,13 +99,13 @@
 	    <repository>
 	      <id>mani</id>
 	      <name>myntra-release</name>
-	      <url>http://35.154.16.241:8081/manikanta/repository/myntra-release/</url>
+	      <url>http://13.235.81.119:8081/manikanta/repository/myntra-release/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>mani</id>
 	      <name>myntra-snapshot</name>
-	      <url>http://35.154.16.241:8081/manikanta/repository/maven-snapshots/</url>
+	      <url>http://13.235.81.119:8081/manikanta/repository/maven-snapshots/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
