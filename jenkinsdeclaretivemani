@@ -39,6 +39,7 @@ steps{
 }
     
 }
+?*
 post{
     success{
         emailext body: 'your code runned successfully', subject: 'success', to: 'manisl339@gmail.com'
@@ -47,6 +48,7 @@ post{
     }
         
     }
+*/
 }    
     
 }
