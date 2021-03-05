@@ -1,0 +1,31 @@
+node
+{
+properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5')), pipelineTriggers([pollSCM('* * * * *')])])
+def maven=tool name:"maven3.6.3"
+
+stage('getcodefromscm')
+{
+  git branch: 'development', url: 'https://github.com/odurimani/maven-web-application.git'  
+}
+stage('build')
+{
+sh"$maven/bin/mvn clean package"    
+}
+stage("sonarqube report")
+{
+    sh"$maven/bin/mvn sonar:sonar"
+}
+stage("move artifactor into artifactorrepository")
+{
+sh"$maven/bin/mvn deploy"
+}
+stage ("deploy to tomcat")
+{
+    sshagent(['5bd630de-6496-4377-b653-a74d015b4729']) {
+    
+sh"scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@65.0.173.205:/opt/apache-tomcat-9.0.43/webapps/"
+
+
+    }    
+    }
+}
