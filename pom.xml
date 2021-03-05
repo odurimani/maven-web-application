@@ -21,7 +21,7 @@
 		<spring.version>5.1.2.RELEASE</spring.version>
 		<junit.version>4.11</junit.version>
 		<log4j.version>1.2.17</log4j.version>
-		 <sonar.host.url>http://52.66.251.100:9000/</sonar.host.url>
+		 <sonar.host.url>http://13.233.103.222/:9000/</sonar.host.url>
                 <sonar.login>5b6218bb181ca5fb70b8097da1a96e02b7f3a4e0</sonar.login>
 		<!-- <sonar.password>Mani@123</sonar.password> -->           
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -98,13 +98,13 @@
 	    <repository>
 	      <id>mani</id>
 	      <name>myntra-release</name>
-	      <url>http://15.206.186.244:8081/manikanta/repository/myntra-release/</url>
+	      <url>http://13.233.158.95/:8081/manikanta/repository/myntra-release/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>mani</id>
 	      <name>myntra-snapshot</name>
-	      <url>http://15.206.186.244:8081/manikanta/repository/myntra-snapshot/</url>
+	      <url>http://13.233.158.95/:8081/manikanta/repository/myntra-snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
