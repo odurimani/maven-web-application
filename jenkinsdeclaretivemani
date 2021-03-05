@@ -1,0 +1,53 @@
+pipeline{
+     agent any;
+tools{        
+    maven'maven3.6.3'
+}
+options{
+    timestamps()
+}
+stages{
+    stage("get code from scm"){
+steps{
+ git branch: 'development', url: 'https://github.com/odurimani/maven-web-application.git' 
+    }
+    }
+stage("build"){
+    steps{
+    sh"mvn clean package"
+}
+}
+stage("sonarqube report"){
+ steps{
+    sh"mvn sonar:sonar"
+}
+}
+stage("move artifactes into artifacte repo"){
+
+steps{
+    sh"mvn deploy"    
+}
+}    
+stage("deploy in tomcatserver"){
+steps{
+    sshagent(['bdd73f0d-8671-48ec-9802-0f30254fb456']) {
+
+      sh"scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@52.66.239.20:/opt/apache-tomcat-9.0.43/webapps/"
+    }    
+}
+    
+}
+    
+}
+/*post{
+    success{
+        emailext body: 'your code runned successfully', subject: 'success', to: 'manisl339@gmail.com'
+    failure {
+        emailext body: 'your code runned un successfully', subject: 'failure', to: 'manisl339@gmail.com'
+    }
+        
+    }
+}    
+*/
+    
+}
