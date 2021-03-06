@@ -1,7 +1,6 @@
 node
 {
 def maven=tool name:"maven3.6.3"
-def tomcat=tool name "apache-tomcat-9.0.43"
 stage('getcodefromscm')
 {
   git branch: 'development', url: 'https://github.com/odurimani/maven-web-application.git'  
