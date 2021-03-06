@@ -18,9 +18,9 @@ stage("build"){
 }
 }
 stage("sonarqube report"){
-withSonarQubeEnv("sonar"){
  steps{
-    sh"mvn sonar:sonar"
+withSonarQubeEnv("sonar"){
+sh"mvn sonar:sonar"
 }
 }
 }
