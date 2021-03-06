@@ -1,6 +1,5 @@
 node
 {
-//properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '5')), pipelineTriggers([pollSCM('* * * * *')])])
 def maven=tool name:"maven3.6.3"
 def tomcat=tool name "apache-tomcat-9.0.43"
 stage('getcodefromscm')
@@ -22,7 +21,7 @@ sh"$maven/bin/mvn deploy"
 stage ("deploy to tomcat")
 {
  sshagent(['c2b9b8c3-6b28-4af3-95dd-7182446e4592']) {
-    sh"scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@13.126.222.153:/opt/apache-tomcat-9.0.43/webapps/"
+    sh"scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@52.66.124.188:/opt/apache-tomcat-9.0.43/webapps/"
 
 
     }    
