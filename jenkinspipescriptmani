@@ -1,4 +1,4 @@
-node
+node('amazon-node')
 {
 def maven=tool name:"maven3.6.3"
 stage('getcodefromscm')
