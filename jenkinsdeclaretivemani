@@ -18,8 +18,10 @@ stage("build"){
 }
 }
 stage("sonarqube report"){
+withSonarQubeEnv("sonar"){
  steps{
     sh"mvn sonar:sonar"
+}
 }
 }
 stage("move artifactes into artifacte repo"){
